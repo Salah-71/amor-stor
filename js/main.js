@@ -16,10 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
 });
 
-// ===== Load Products from db.js =====
-function loadProducts() {
+// ===== Load Products Dynamically from GitHub =====
+async function loadProducts() {
     const grid = document.getElementById('productsGrid');
     try {
+        const timestamp = new Date().getTime();
+        const response = await fetch(`https://raw.githubusercontent.com/Salah-71/amor-stor/main/js/db.js?t=${timestamp}`);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const dbCode = await response.text();
+        
+        // Execute the db.js code to populate dbProducts
+        eval(dbCode);
+        
         allProducts = typeof dbProducts !== 'undefined' ? dbProducts : [];
         filteredProducts = [...allProducts];
         renderProducts();
