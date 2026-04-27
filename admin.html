@@ -43,15 +43,8 @@
                 <form id="productForm" onsubmit="saveProduct(event)">
                     <input type="hidden" id="editProductId">
                     <input type="text" id="pName" placeholder="اسم المنتج" required>
-                    <select id="pCategory">
-                        <option value="مزيل مكياج">مزيل مكياج</option>
-                        <option value="مثبت مكياج">مثبت مكياج</option>
-                        <option value="برايمر">برايمر</option>
-                        <option value="كريم عناية">كريم عناية</option>
-                        <option value="بودرة">بودرة</option>
-                        <option value="ماسكارا">ماسكارا</option>
-                        <option value="زيت شفاه">زيت شفاه</option>
-                    </select>
+                    <input type="text" id="pCategory" list="categoriesList" placeholder="أدخل قسم جديد أو اختر من القائمة" required>
+                    <datalist id="categoriesList"></datalist>
                     <input type="number" id="pPrice" placeholder="السعر" required>
                     <textarea id="pDescription" placeholder="الوصف"></textarea>
                     <input type="text" id="pImageUrl" placeholder="اسم ملف الصورة (مثلاً 1000693861.jpg)">
@@ -60,6 +53,7 @@
             </section>
         </div>
     </div>
+    <script src="js/db.js"></script>
     <script src="js/admin.js"></script>
 </body>
 </html>
