@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - AMOR STOR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <h1>AMOR STOR</h1>
+            <h2>لوحة التحكم</h2>
+            <form onsubmit="adminLogin(event)">
+                <input type="password" id="adminPass" placeholder="كلمة المرور" required class="login-field">
+                <p id="loginError" style="color:red; font-size:13px; margin-bottom:10px;"></p>
+                <button type="submit" class="login-btn">دخول</button>
+            </form>
+            <a href="index.html" style="display:block; margin-top:15px; color:#666;">العودة للمتجر</a>
+        </div>
+    </div>
+
+    <div class="admin-panel" id="adminPanel" style="display:none;">
+        <div class="sidebar">
+            <h2>AMOR STOR</h2>
+            <nav>
+                <button onclick="showSection('products')">المنتجات</button>
+                <button onclick="showSection('add')">إضافة منتج</button>
+                <button onclick="adminLogout()" style="background:#ff4757;">خروج</button>
+            </nav>
+        </div>
+        <div class="content">
+            <section id="section-products" class="section active">
+                <h2>إدارة المنتجات</h2>
+                <table border="1" width="100%" style="border-collapse:collapse;">
+                    <thead><tr><th>الصورة</th><th>الاسم</th><th>الفئة</th><th>السعر</th><th>الإجراءات</th></tr></thead>
+                    <tbody id="productsTableBody"></tbody>
+                </table>
+            </section>
+            <section id="section-add" class="section">
+                <h2 id="formTitle">إضافة منتج جديد</h2>
+                <form id="productForm" onsubmit="saveProduct(event)">
+                    <input type="hidden" id="editProductId">
+                    <input type="text" id="pName" placeholder="اسم المنتج" required>
+                    <select id="pCategory">
+                        <option value="مزيل مكياج">مزيل مكياج</option>
+                        <option value="مثبت مكياج">مثبت مكياج</option>
+                        <option value="برايمر">برايمر</option>
+                        <option value="كريم عناية">كريم عناية</option>
+                        <option value="بودرة">بودرة</option>
+                        <option value="ماسكارا">ماسكارا</option>
+                        <option value="زيت شفاه">زيت شفاه</option>
+                    </select>
+                    <input type="number" id="pPrice" placeholder="السعر" required>
+                    <textarea id="pDescription" placeholder="الوصف"></textarea>
+                    <input type="text" id="pImageUrl" placeholder="اسم ملف الصورة (مثلاً 1000693861.jpg)">
+                    <button type="submit" class="login-btn">حفظ</button>
+                </form>
+            </section>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMOR STOR - متجر أدوات تجميل</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <span><i class="fab fa-whatsapp"></i> تابعنا على قناة Amor Store</span>
+                    <a href="https://whatsapp.com/channel/0029Vb7rcLSCRs1hEdObvf0m" target="_blank" class="header-link">انضم الآن</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <h1 class="logo-name">AMOR STOR</h1>
+                        <p class="logo-sub">متجر أدوات تجميل</p>
+                    </div>
+                    <nav class="nav" id="nav">
+                        <ul>
+                            <li><a href="#home">الرئيسية</a></li>
+                            <li><a href="#products">المنتجات</a></li>
+                            <li><a href="#categories">الفئات</a></li>
+                            <li><a href="#contact">تواصل</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header-actions">
+                        <button class="cart-btn" id="cartBtn" onclick="toggleCart()">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                        <button class="menu-btn" id="menuBtn" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-nav" onclick="toggleMobileNav()"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="#home" onclick="toggleMobileNav()">الرئيسية</a></li>
+            <li><a href="#products" onclick="toggleMobileNav()">المنتجات</a></li>
+            <li><a href="#categories" onclick="toggleMobileNav()">الفئات</a></li>
+            <li><a href="#contact" onclick="toggleMobileNav()">تواصل معنا</a></li>
+        </ul>
+    </div>
+    <div class="nav-overlay" id="navOverlay" onclick="toggleMobileNav()"></div>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">✨ وصل حديثاً</span>
+                <h2 class="hero-title">أجمل ما في عالم<br><span>التجميل</span></h2>
+                <p class="hero-desc">اكتشف أرقى منتجات التجميل والعناية بالبشرة<br>بأسعار مناسبة بالريال اليمني - صنعاء</p>
+                <div class="hero-btns">
+                    <a href="#products" class="btn-primary">تسوق الآن <i class="fas fa-arrow-left"></i></a>
+                    <a href="https://wa.me/967775490941" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>فئات المنتجات</h2>
+            </div>
+            <div class="categories-grid" id="categoriesGrid">
+                <div class="category-card active" data-cat="all"><span>الكل</span></div>
+                <div class="category-card" data-cat="مزيل مكياج"><span>مزيل مكياج</span></div>
+                <div class="category-card" data-cat="مثبت مكياج"><span>مثبت مكياج</span></div>
+                <div class="category-card" data-cat="برايمر"><span>برايمر</span></div>
+                <div class="category-card" data-cat="كريم عناية"><span>كريم عناية</span></div>
+                <div class="category-card" data-cat="بودرة"><span>بودرة</span></div>
+                <div class="category-card" data-cat="ماسكارا"><span>ماسكارا</span></div>
+                <div class="category-card" data-cat="زيت شفاه"><span>زيت شفاه</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>منتجاتنا المميزة</h2>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج..." oninput="filterProducts()">
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <section class="instagram-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>حساباتنا الرسمية</h2>
+            </div>
+            <div class="instagram-cards">
+                <a href="https://www.instagram.com/amor.store_as" target="_blank" class="insta-card">
+                    <div class="insta-icon"><i class="fab fa-instagram"></i></div>
+                    <div class="insta-info"><h4>@amor.store_as</h4><p>صفحة المتجر الرسمية</p></div>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb7rcLSCRs1hEdObvf0m" target="_blank" class="insta-card whatsapp-card">
+                    <div class="insta-icon whatsapp-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="insta-info"><h4>Amor Store ✨</h4><p>قناة واتساب الرسمية</p></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>نحن هنا لخدمتك</h2>
+                    <p>للطلبات والاستفسارات تواصل معنا عبر واتساب</p>
+                    <a href="https://wa.me/967775490941" target="_blank" class="whatsapp-big-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        <div><span>للطلب الآن عبر واتساب</span><small>+967 775 490 941</small></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 AMOR STOR - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-overlay" onclick="toggleCart()"></div>
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h3>سلة المشتريات</h3>
+                <button onclick="toggleCart()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cart-body" id="cartBody"></div>
+            <div class="cart-footer" id="cartFooter" style="display:none;">
+                <div class="cart-total"><span>الإجمالي:</span><strong id="cartTotal">0 ريال</strong></div>
+                <button class="whatsapp-order-btn" onclick="orderViaWhatsApp()">للطلب عبر واتساب</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <a href="https://wa.me/967775490941" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

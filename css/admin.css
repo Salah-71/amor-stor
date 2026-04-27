@@ -1,0 +1,15 @@
+body { font-family: 'Cairo', sans-serif; background: #f4f6fb; direction: rtl; margin: 0; }
+.login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.login-box { background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); text-align: center; width: 350px; }
+.login-field { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; text-align: center; font-family: 'Cairo'; }
+.login-btn { width: 100%; padding: 10px; background: #c8547a; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-family: 'Cairo'; }
+.admin-panel { display: flex; min-height: 100vh; }
+.sidebar { width: 220px; background: #1a1a2e; color: #fff; padding: 20px; }
+.sidebar h2 { font-size: 20px; margin-bottom: 30px; text-align: center; }
+.sidebar nav button { width: 100%; padding: 12px; margin-bottom: 10px; background: none; border: 1px solid #333; color: #fff; border-radius: 8px; cursor: pointer; text-align: right; font-family: 'Cairo'; }
+.sidebar nav button:hover { background: #c8547a; border-color: #c8547a; }
+.content { flex: 1; padding: 30px; }
+.section { display: none; }
+.section.active { display: block; }
+input, select, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Cairo'; }
+textarea { height: 100px; }
