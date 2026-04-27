@@ -4,26 +4,32 @@ let currentCategory = 'all';
 let cart = JSON.parse(localStorage.getItem('amorCart') || '[]');
 const WHATSAPP_NUMBER = '967775490941';
 
-const defaultProducts = [
-    { id: 'p1', name: 'مثبت مكياج الكوجيك أسيد - Kiss Beauty', price: 1200, category: 'مثبت مكياج', image_url: 'IMG-20260424-WA0017.jpg', description: 'ثبات حتى 16 ساعة.', available: true },
-    { id: 'p2', name: 'برايمر هيدرو جريب - Diamond Beauty', price: 1500, category: 'برايمر', image_url: 'IMG-20260424-WA0018.jpg', description: 'ترطيب عميق.', available: true },
-    { id: 'p3', name: 'ماسكارا رموش كثيفة - SHEGLAM', price: 1200, category: 'ماسكارا', image_url: 'IMG-20260424-WA0020.jpg', description: 'طول طبيعي.', available: true },
-    { id: 'p4', name: 'بودرة مضغوطة مضيئة - SHEGLAM', price: 1300, category: 'بودرة', image_url: 'IMG-20260424-WA0021.jpg', description: 'تغطية مثالية.', available: true },
-    { id: 'p5', name: 'كريم المعجزة الكوري - SHEGLAM', price: 1300, category: 'كريم عناية', image_url: 'IMG-20260425-WA0000.jpg', description: 'تنقية للمسام.', available: true },
-    { id: 'p6', name: 'زيت الشفاه الوردي - Rose Magic', price: 500, category: 'زيت شفاه', image_url: 'IMG-20260425-WA0001.jpg', description: 'ترطيب ولمعان.', available: true },
-    { id: 'p7', name: 'مثبت مكياج نايکد - NAKED', price: 1800, category: 'مثبت مكياج', image_url: 'IMG-20260425-WA0002.jpg', description: 'يحافظ على الجمال.', available: true },
-    { id: 'p8', name: 'مزيل مكياج 5 في 1 - Kiss Beauty', price: 1300, category: 'مزيل مكياج', image_url: 'IMG-20260425-WA0003.jpg', description: 'تنظيف عميق.', available: true },
-    { id: 'p9', name: 'منظف اللافندر الطبيعي - Clean it natural', price: 1400, category: 'مزيل مكياج', image_url: 'IMG-20260424-WA0017.jpg', description: 'نظافة طبيعية.', available: true }
-];
-
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
-    const stored = localStorage.getItem('amorProducts');
-    allProducts = stored ? JSON.parse(stored) : defaultProducts;
-    if(!stored) localStorage.setItem('amorProducts', JSON.stringify(defaultProducts));
+    allProducts = typeof dbProducts !== 'undefined' ? dbProducts : [];
     filteredProducts = [...allProducts];
+    renderCategories();
     renderProducts();
 });
+
+function renderCategories() {
+    const grid = document.getElementById('categoriesGrid');
+    const uniqueCategories = [...new Set(allProducts.map(p => p.category))];
+    let html = `<div class="category-card ${currentCategory === 'all' ? 'active' : ''}" data-cat="all"><span>الكل</span></div>`;
+    uniqueCategories.forEach(cat => {
+        html += `<div class="category-card ${currentCategory === cat ? 'active' : ''}" data-cat="${cat}"><span>${cat}</span></div>`;
+    });
+    grid.innerHTML = html;
+
+    document.querySelectorAll('.category-card').forEach(c => {
+        c.addEventListener('click', function() {
+            document.querySelectorAll('.category-card').forEach(x => x.classList.remove('active'));
+            this.classList.add('active');
+            currentCategory = this.dataset.cat;
+            filterProducts();
+        });
+    });
+}
 
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
@@ -46,14 +52,7 @@ function filterProducts() {
     renderProducts();
 }
 
-document.querySelectorAll('.category-card').forEach(c => {
-    c.addEventListener('click', function() {
-        document.querySelectorAll('.category-card').forEach(x => x.classList.remove('active'));
-        this.classList.add('active');
-        currentCategory = this.dataset.cat;
-        filterProducts();
-    });
-});
+// Dynamic categories handled directly in renderCategories()
 
 function addToCart(id) {
     const p = allProducts.find(x => x.id === id);
