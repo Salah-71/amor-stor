@@ -32,7 +32,7 @@ function showSection(id) {
 async function loadAdminProducts() {
     try {
         document.getElementById('productsTableBody').innerHTML = '<tr><td colspan="5" style="text-align:center;">جاري جلب البيانات من السيرفر...</td></tr>';
-        const res = await fetch('https://api.github.com/repos/Salah-71/amor-stor/contents/js/db.js?ref=main', {
+        const res = await fetch(`https://api.github.com/repos/Salah-71/amor-stor/contents/js/db.js?ref=main&t=${Date.now()}`, {
             headers: { 'Authorization': `token ${GH_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Cache-Control': 'no-cache' }
         });
         if (res.ok) {
