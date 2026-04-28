@@ -1,7 +1,7 @@
 const dbProducts = [
   {
     "id": "p1",
-    "name": "مثبت مكياج الكوجيك أسيد - Kiss Beauty",
+    "name": "مثبت مكياج الكوجيك أسيد - Kiss Beauty.",
     "category": "مثبت مكياج",
     "price": "1200",
     "description": "ثبات حتى 16 ساعة.",
